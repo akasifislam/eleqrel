@@ -32,10 +32,16 @@ class HomeController extends Controller
 
     public function userInfo()
     {
+        // ========== one to one ===========
         // $user = User::find(Auth::user()->id);
         // return view('welcome', compact('user'));
 
-        $nid = Nid::where('user_id', Auth::user()->id)->first();
-        return view('welcome', compact('nid'));
+        // $nid = Nid::where('user_id', Auth::user()->id)->first();
+        // return view('welcome', compact('nid'));
+
+        // ========== one to many ===========
+
+        $user = User::find(Auth::user()->id);
+        return view('welcome', compact('user'));
     }
 }

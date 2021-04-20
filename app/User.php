@@ -36,9 +36,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    // one to one 
+    // public function nid()
+    // {
+    //     return $this->hasOne(Nid::class);
+    // }
+    
+    // has many
 
-    public function nid()
+    public function nids()
     {
-        return $this->hasOne(Nid::class);
+        return $this->hasMany(Nid::class);
     }
+
+
+
+
 }

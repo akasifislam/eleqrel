@@ -83,19 +83,27 @@
                 <div class="title m-b-md">
                     Laravel
                 </div>
-
+                {{-- == one to one  --}}
                 {{-- <div class="links">
                     <h5>{{ $user->name }}</h5>
                     <h5>{{ $user->email }}</h5>
                     <h5>{{ $user->nid->nid_number }}</h5>
                     <h5>{{ $user->nid->user_id }}</h5>
                 </div> --}}
-                <div class="links">
+                {{-- <div class="links">
                     <h5>{{ $nid->user->name }}</h5>
                     <h5>{{ $nid->user->email }}</h5>
                     <h5>{{ $nid->nid_number }}</h5>
                     <h5>{{ $nid->user->id }}</h5>
+                </div> --}}
+                <div class="links">
+                    <h5>{{ $user }}</h5>
+                    @foreach ($user->nids as $nid)
+                    <h5>{{ $nid->nid_number }}</h5>
+                    @endforeach
+                    
                 </div>
+               
             </div>
         </div>
     </body>
