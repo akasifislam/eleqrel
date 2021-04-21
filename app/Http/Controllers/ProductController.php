@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Category;
 use App\Model\Product;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::all();
+        $categories = Category::all();
+        return view('pages.product_list', compact('products', 'categories'));
     }
 
     /**
@@ -24,7 +27,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('pages.product_create', compact('categories'));
     }
 
     /**
@@ -35,7 +39,12 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $categories = $request->categories;
+        unset($request['categories']);
+        $product = Product::create($request->all());
+
+        $product->categories()->attach($categories);
+        return redirect()->route('product.index');
     }
 
     /**
@@ -57,7 +66,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        $categories = Category::all();
+        return view('pages.product_edit', compact('product', 'categories'));
     }
 
     /**
@@ -69,7 +79,12 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $categories = $request->categories;
+        unset($request['categories']);
+        $product->update($request->all());
+        $product->categories()->detach();
+        $product->categories()->attach($categories);
+        return redirect()->route('product.index');
     }
 
     /**
@@ -80,6 +95,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        $product->categories()->detach();
+        return redirect()->route('product.index');
     }
 }

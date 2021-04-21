@@ -41,7 +41,7 @@ class HomeController extends Controller
 
         // ========== one to many ===========
 
-        $user = User::find(Auth::user()->id);
-        return view('welcome', compact('user'));
+        // $user = User::find(Auth::user()->id);
+        // return view('welcome', compact('user'));
     }
 }
