@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -28,3 +29,4 @@ Route::get('/alu', 'HomeController@userInfo');
 
 
 Route::resource('product', 'ProductController');
+Route::resource('post', 'PostController');

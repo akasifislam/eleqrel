@@ -7,7 +7,7 @@
                     @csrf
                     <div class="form-group">
                       <label for="name">Post Name</label>
-                      <input value="{{ $posts->name }}" type="text" class="form-control" name="name" id="name" placeholder="Product Name">
+                      <input type="text" class="form-control" name="name" id="name" placeholder="Product Name">
                     </div>
                     {{-- <div class="form-group">
                         <input type="file" name="path" class="form-control"  >    
