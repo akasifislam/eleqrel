@@ -32,3 +32,5 @@ Route::get('/alu', 'HomeController@userInfo');
 Route::resource('product', 'ProductController');
 Route::resource('post', 'PostController');
 Route::resource('video', 'VideoController');
+Route::get('/comment/{id}', 'VideoController@createComment')->name('create.comment');
+Route::post('/comment-store', 'VideoController@createStore')->name('comment.store');

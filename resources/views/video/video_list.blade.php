@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 offset-2">
-                <a href="{{ route('post.create') }}" class="btn btn-sm btn-primary float-right mt-1">add new</a>
+                <a href="{{ route('video.create') }}" class="btn btn-sm btn-primary float-right mt-1">add new</a>
                 <table class="table table-bordered table-striped table-hover table-sm">
                     <thead>
                       <tr>
@@ -21,8 +21,9 @@
                                 <td>
                                     <form action="{{ route('video.destroy',$video->id) }}" method="POST">
                                         @csrf
-                                        @method('DELETE')
+                                        @method('DELETE') create.comment
                                         <a href="{{ route('video.edit',$video->id) }}" class="btn btn-primary">edit</a>
+                                        <a href="{{ route('create.comment',$video->id) }}" class="btn btn-success">comment</a>
                                         <button class="btn btn-danger btn-sm'">delete</button>
                                     </form>
                                 </td>

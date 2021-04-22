@@ -25,7 +25,7 @@ class VideoController extends Controller
      */
     public function create()
     {
-        //
+        return view('video.video_create');
     }
 
     /**
@@ -36,7 +36,8 @@ class VideoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Video::create($request->all());
+        return redirect()->route('video.index');
     }
 
     /**
@@ -82,6 +83,21 @@ class VideoController extends Controller
     public function destroy(Video $video)
     {
         $video->delete();
+        return redirect()->route('video.index');
+    }
+
+    public function createComment($id)
+    {
+        $video = Video::find($id);
+        return view('video.comment_create', compact('video'));
+    }
+
+    public function createStore(Request $request)
+    {
+        $video = Video::find($request->video_id);
+        $video->comments()->create(
+            ['body' => $request->body]
+        );
         return redirect()->route('video.index');
     }
 }
