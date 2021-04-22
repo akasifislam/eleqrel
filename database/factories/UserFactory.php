@@ -4,6 +4,7 @@
 
 use App\Model\Category;
 use App\Model\Post;
+use App\Model\Video;
 use App\User;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
@@ -34,6 +35,11 @@ $factory->define(Category::class, function (Faker $faker) {
     ];
 });
 $factory->define(Post::class, function (Faker $faker) {
+    return [
+        'name' => $faker->name,
+    ];
+});
+$factory->define(Video::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
     ];

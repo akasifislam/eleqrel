@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
@@ -30,3 +31,4 @@ Route::get('/alu', 'HomeController@userInfo');
 
 Route::resource('product', 'ProductController');
 Route::resource('post', 'PostController');
+Route::resource('video', 'VideoController');
